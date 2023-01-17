@@ -8,16 +8,28 @@
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
 			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
+			<i class="fa-solid fa-bars text-primary"></i>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a class="nav-link active"
 					aria-current="page" href="index.jsp"><i
 						class="fa-solid fa-gauge"></i> Dashboard</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="TotalBalance.jsp"><i class="fa-solid fa-file-invoice"></i>
-						Total Balance</a></li>
+               
+               <% 
+                User u = (User)session.getAttribute("currentUser");
+                if(u!=null){
+               %>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" role="button"
+					data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars-progress"></i> Track </a>
+					<ul class="dropdown-menu">
+
+						<li><a class="dropdown-item" href="trackExpense.jsp">
+								Expenses</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="ExpenseRecords.jsp">Income</a></li>
+					</ul></li>
 
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
@@ -44,6 +56,7 @@
 						<li><a class="dropdown-item" href="ExpenseRecords.jsp">Expense
 								Records</a></li>
 					</ul></li>
+			 <% } %>		
 
 			</ul>
 
@@ -74,7 +87,7 @@
 </nav>
 
 <!-- MODAL -->
-<%@include file="modal.jsp" %>
+<%@include file="modal.jsp"%>
 
 <!-- SCRIPT -->
 <script type="text/javascript" src="profileEdit.js"></script>

@@ -52,6 +52,7 @@
 								<div class="col-md-6">
 									<label for="inputPassword4" class="form-label">Password</label>
 									<input type="password" name="pass" required title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" id="inputPassword4">
+									<button id="passTogg" onclick="myFunction(event)" class="btn">Show Password</button>
 								</div>
 								
 								<div class="col-12">
@@ -82,4 +83,18 @@
 	</div>
 
 </body>
+<script type="text/javascript">
+ function myFunction(event){
+	 event.preventDefault();
+	 var x = document.getElementById('inputPassword4');
+	 var y = document.getElementById('passTogg');
+	 if(x.type === 'password'){
+		 x.type = 'text';
+		 y.innerHTML = 'Hide Password';
+	 }else{
+		 x.type = 'password';
+		 y.innerHTML = 'Show Password';
+	 }
+ }
+</script>
 </html>
