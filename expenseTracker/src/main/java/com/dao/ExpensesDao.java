@@ -66,5 +66,64 @@ public class ExpensesDao {
 		}
 		return list;
 	}
+	public Expenses fetchExpense(int id) {
+		Expenses exp = null;
+		try {
+			String s = "select * from expenses where idexpenses=?";
+			PreparedStatement stmt = con.prepareStatement(s);
+			stmt.setInt(1, id);
+			ResultSet set = stmt.executeQuery();
+			while(set.next()) {
+				exp = new Expenses();
+				exp.setEid(set.getInt("idexpenses"));
+				exp.setEname(set.getString("expensesName"));
+				exp.setEtype(set.getString("expensesType"));
+				exp.setEmm(set.getInt("expensesMM"));
+				exp.setEyy(set.getInt("expensesYY"));
+				exp.setEprice(set.getInt("expensesCost"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return exp;
+	}
+	
+	public boolean updateExpense(int id, Expenses ex) {
+		boolean f = false;
+		 try {
+			String s = "update expenses set expensesName=?, expensesType=?, expensesMM=?, expensesYY=?, expensesCost=? where idexpenses=?";
+			PreparedStatement stmt = con.prepareStatement(s);
+			stmt.setString(1, ex.getEname());
+			stmt.setString(2, ex.getEtype());
+			stmt.setInt(3, ex.getEmm());
+			stmt.setInt(4, ex.getEyy());
+			stmt.setInt(5, ex.getEprice());
+			stmt.setInt(6, id);
+			stmt.executeUpdate();
+			f=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return f;
+	}
+	
+	public boolean deleteExpense(int id) {
+		boolean f = false;
+		
+		try {
+			String s = "delete from expenses where idexpenses=?";
+			PreparedStatement stmt = con.prepareStatement(s);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			f=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		
+		return f;
+	}
 
 }

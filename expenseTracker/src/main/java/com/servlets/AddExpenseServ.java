@@ -58,8 +58,8 @@ public class AddExpenseServ extends HttpServlet {
 		if(dao.saveExpense(ex)) {
 			out.print("Done!");
 			AlertMessage m = new AlertMessage("success", "Addedd Successfully !!");
-			s.setAttribute("newExpMSG", m);
-			response.sendRedirect("NewExpense.jsp");
+			s.setAttribute("expRecMSG", m);
+			response.sendRedirect("ExpenseRecords.jsp");
 		}else {
 			out.print("Error!!");
 			AlertMessage m = new AlertMessage("danger", "Something Went Wrong !! Please re-verify your entered data.");

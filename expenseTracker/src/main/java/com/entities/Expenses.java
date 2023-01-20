@@ -15,6 +15,19 @@ public class Expenses {
 		super();
 	}
 
+ 
+	public Expenses(int eid, String ename, String etype, int emm, int eyy, int eprice, String euser) {
+		super();
+		this.eid = eid;
+		this.ename = ename;
+		this.etype = etype;
+		this.emm = emm;
+		this.eyy = eyy;
+		this.eprice = eprice;
+		this.euser = euser;
+	}
+
+
 	public Expenses(int eid, String ename, String etype, String emmyy, int emm, int eyy, int eprice, String euser) {
 		super();
 		this.eid = eid;

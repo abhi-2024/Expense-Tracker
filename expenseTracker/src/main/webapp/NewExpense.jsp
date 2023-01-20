@@ -57,6 +57,9 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 										Type</label> <select name="iType" class="form-select">
 										<option selected="selected" disabled="disabled">Select
 											an option</option>
+										<option value="Self">Self</option>
+										<option value="Business">Business</option>
+										<option value="Gift">Gift</option>	
 									</select>
 
 								</div>
@@ -85,6 +88,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 	</div>
 	
 	<script type="text/javascript">
+
 		function addExp(event) {
 			event.preventDefault();
 			
@@ -95,11 +99,11 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 			console.log(nY);
 			
 			var nM = y.substring(y.indexOf("-")+1);
-			
+			console.log(nM);
 			document.getElementById('year').value = nY;
 			document.getElementById('mnth').value = nM;
 			
-		    document.getElementById('form').submit();
+		    document.getElementById('form').submit(); 
 			
 		}
 	</script>

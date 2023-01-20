@@ -1,3 +1,4 @@
+<%@page import="com.entities.AlertMessage"%>
 <%@page import="com.helper.ConnectionProvider"%>
 <%@page import="com.dao.ExpensesDao"%>
 <%@page import="com.entities.Expenses"%>
@@ -23,11 +24,23 @@
 	%>
 	<div class="d-flex align-items-center" style="height: 80vh;">
 		<div class="container">
-		  <div class="row">
-		   <div class="col-md-12 text-center">
-		    <h1 class="display-5 p-6"> Expense Records </h1>
-		   </div>
-		  </div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1 class="display-5 p-6">Expense Records</h1>
+				</div>
+			</div>
+			
+			<% 
+			  AlertMessage am2 = (AlertMessage)session.getAttribute("expRecMSG");
+			  if(am2!=null){
+			%>
+			<div class="row">
+				<div class="col-md-6 offset-3 text-center">
+					<div class="alert alert-<%=am2.getType() %>" role="alert"><%=am2.getContent() %></div>
+				</div>
+			</div>	
+			<% } session.removeAttribute("expRecMSG"); %>	
+			
 			<div class="row">
 				<div class="col-md-12 ">
 					<div class="table-responsive">
@@ -49,8 +62,16 @@
 									<td><%=e.getEname()%></td>
 									<td><%=e.getEtype()%></td>
 									<td>0<%=e.getEmm()%>/<%=e.getEyy()%></td>
-									<td><%=e.getEprice()%></td>
-									<td></td>
+									<td>Rs.<%=e.getEprice()%></td>
+									<td>
+										<form action="SingleExpServ" method="post">
+											<input name="id" style="display: none;"
+												value="<%=e.getEid()%>">
+											<button title="View Details" class="btn">
+												<i class="fa-solid fa-eye"></i>
+											</button>
+										</form>
+									</td>
 								</tr>
 								<%
 								}

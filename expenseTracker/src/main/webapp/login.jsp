@@ -20,8 +20,6 @@
 							<h1 class="display-6 text-center">Login</h1>
 						</div>
 						<%
-					
-						 
 										 AlertMessage m = (AlertMessage)session.getAttribute("loginMSG");
 										 if(m!=null){
 						%>
@@ -44,7 +42,7 @@
 								<input type="password" class="form-control" id="floatingPassword" required name="pass" placeholder="Password">
 								 <label for="floatingPassword">Password</label>
 							</div>
-							
+							<div class="text-end"> <button class="btn" id="pBtn" onclick="myFunction(event)"> Show Password</button> </div>
 							<div class="mt-2 text-center">
 							 <button type="submit" class="btn btn-primary">Login</button>
 							 <a href="signup.jsp" class="btn btn-secondary">New User</a>
@@ -62,4 +60,22 @@
 	</div>
 
 </body>
+<script type="text/javascript">
+ 
+  function myFunction(event) {
+	event.preventDefault();
+    
+	var x =  document.getElementById('floatingPassword');
+	var y =  document.getElementById('pBtn');
+	if(x.type === 'password'){
+		x.type = 'text';
+		y.innerHTML = 'Hide Password';
+	}else{
+		x.type = 'password';
+		y.innerHTML = 'Show Password';
+	}
+ }
+ 
+ 
+</script>
 </html>
