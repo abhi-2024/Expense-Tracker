@@ -20,16 +20,6 @@
                 User u = (User)session.getAttribute("currentUser");
                 if(u!=null){
                %>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars-progress"></i> Track </a>
-					<ul class="dropdown-menu">
-
-						<li><a class="dropdown-item" href="trackExpense.jsp">
-								Expenses</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="ExpenseRecords.jsp">Income</a></li>
-					</ul></li>
 
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"

@@ -31,7 +31,7 @@
 							<div class="text-start">
 								<div class="btn-group" role="group"
 									aria-label="Basic mixed styles example">
-									<a type="button" id="sInvoice" class="btn btn-warning"><i
+									<a type="button" id="sInvoice" onClick="sendMail()" class="btn btn-warning"><i
 										class="fa-solid fa-receipt"></i> Invoice</a>
 									<button type="button" id="editBtn" class="btn btn-danger">Edit</button>
 									<a type="button" id="aExp" class="btn btn-primary"
@@ -140,6 +140,22 @@
 	</div>
 
 	<script type="text/javascript" src="SingleIncome.js"></script>
+	<script type="text/javascript">
+	 function sendMail(){
+		 var params= {
+			 to_name: "<%=user.getfName()%> <%=user.getlName()%>" ,
+			 to_address: "<%=user.getAdd()%>" ,
+			 to_email: "<%=user.getEmail()%>",
+			 to_itemName: "<%=inn.getIfrom()%>",
+			 to_type: "<%=inn.getItype()%>",
+			 to_price: "<%=inn.getIprice()%>",
+		 };
+		 emailjs.send("service_73pc8m8","template_f5akfll",params).then(function(res){
+			 console.log("Success!!");
+			 alert("Success",res.status);
+		 });
+	 }
+	</script>
 	<script type="text/javascript">
       let m = "<%=inn.getMm()%>";
 	  let y = "<%=inn.getYy()%>";

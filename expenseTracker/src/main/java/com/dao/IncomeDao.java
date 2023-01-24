@@ -103,4 +103,26 @@ public class IncomeDao {
 		}
 		return f;
 	}
+	
+	public ArrayList<Income> fetchIncomeUYM(int year, int mnth, String email){
+		ArrayList<Income> list = new ArrayList<Income>();
+		try {
+			String s = "select * from income where incomeMM=? and incomeYY=? and incomeUser=?";
+			PreparedStatement stmt = con.prepareStatement(s);
+			stmt.setInt(1, mnth);
+			stmt.setInt(2, year);
+			stmt.setString(3, email);
+			ResultSet set = stmt.executeQuery();
+			while(set.next()) {
+				Income inc = new Income();
+				inc.setIfrom(set.getString("incomeFrom"));
+				inc.setIprice(set.getInt("incomePrice"));
+				list.add(inc);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return list;
+	}
 }

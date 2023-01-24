@@ -20,6 +20,15 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+	
+</script>
+<script type="text/javascript">
+	(function() {
+		emailjs.init("dNV5bqSikmZQJooYr");
+	})();
+</script>
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>

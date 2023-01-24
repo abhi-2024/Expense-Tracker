@@ -43,7 +43,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 							<div class="text-start">
 								<div class="btn-group" role="group"
 									aria-label="Basic mixed styles example">
-									<a type="button" id="sInvoice" class="btn btn-warning"><i
+									<a type="button" onClick="sendEmail()" id="sInvoice" class="btn btn-warning"><i
 										class="fa-solid fa-receipt"></i> Invoice</a>
 									<button type="button" id="editBtn" class="btn btn-danger">Edit</button>
 									<a type="button" id="aExp" class="btn btn-primary" href="BackRecExpServ">All
@@ -147,7 +147,23 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 	</div>
 
 	<script type="text/javascript" src="singleExp.js"></script>
-	
+	<script type="text/javascript">
+	 function sendEmail(){
+		 var params = {
+			to_name: "<%=user.getfName()%> <%=user.getlName()%>" ,
+			to_address: "<%=user.getAdd()%>" ,
+			to_email: "<%=user.getEmail()%>",
+			to_itemName: "<%=e2.getEname()%>",
+			to_type: "<%=e2.getEtype()%>",
+			to_price: "<%=e2.getEprice()%>",
+		 };
+		 
+		 emailjs.send("service_73pc8m8","template_f5akfll",params).then(function(res){
+			 console.log("Success!!");
+			 alert("Success",res.status);
+		 })
+	 }
+	</script>
 	<script type="text/javascript">
       var m = document.getElementById('mnth');
 	  var my = document.getElementById('mmyy');

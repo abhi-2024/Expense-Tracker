@@ -66,6 +66,32 @@ public class ExpensesDao {
 		}
 		return list;
 	}
+	public ArrayList<Expenses> fetchExpensesUMonth(int mnth, int yr, String email){
+		ArrayList<Expenses> list = new ArrayList<Expenses>();
+		try {
+			String s = "select * from expenses where expensesMM=? and expensesYY=? and expensesEmail=?";
+			PreparedStatement stmt = con.prepareStatement(s);
+			stmt.setInt(1, mnth);
+			stmt.setInt(2, yr);
+			stmt.setString(3, email);
+			ResultSet set = stmt.executeQuery();
+			while(set.next()) {
+				Expenses ex = new Expenses();
+				ex.setEname(set.getString("expensesName"));
+				ex.setEtype(set.getString("expensesType"));
+				ex.setEmm(set.getInt("expensesMM"));
+				ex.setEyy(set.getInt("expensesYY"));
+				ex.setEprice(set.getInt("expensesCost"));
+				ex.setEid(set.getInt("idexpenses"));
+				
+				list.add(ex);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return list;
+	}
 	public Expenses fetchExpense(int id) {
 		Expenses exp = null;
 		try {
