@@ -1,3 +1,7 @@
+<%@page import="com.entities.Types"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.helper.ConnectionProvider"%>
+<%@page import="com.dao.adminDao"%>
 <%@page import="com.entities.AlertMessage"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -57,9 +61,12 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 										Type</label> <select name="iType" class="form-select">
 										<option selected="selected" disabled="disabled">Select
 											an option</option>
-										<option value="Self">Self</option>
-										<option value="Business">Business</option>
-										<option value="Gift">Gift</option>	
+										 <% adminDao dao22 = new adminDao(ConnectionProvider.getConnection());
+											ArrayList<Types> list23 = dao22.fetchTypes();
+											for(Types tt : list23){
+											%>		
+											<option value="<%=tt.getName()%>"><%= tt.getName() %></option>
+										<% } %>	
 									</select>
 
 								</div>

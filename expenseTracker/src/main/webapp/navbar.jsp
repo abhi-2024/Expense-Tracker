@@ -1,4 +1,5 @@
 
+<%@page import="com.entities.Admin"%>
 <%@page import="com.entities.User"%>
 <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
 	<div class="container-fluid">
@@ -12,15 +13,35 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="index.jsp"><i
-						class="fa-solid fa-gauge"></i> Dashboard</a></li>
-               
-               <% 
-                User u = (User)session.getAttribute("currentUser");
+				
+						
+			   <%
+			      User u = (User)session.getAttribute("currentUser");
+			      User user = (User) session.getAttribute("currentUser");
+			      Admin admin = (Admin)session.getAttribute("currentAdmin");
+			      if(admin!=null){
+			   %>		
+			   <li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="AdminDashBoard.jsp"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                     <li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" role="button"
+					data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-lock"></i> Admin </a>
+					<ul class="dropdown-menu">
+
+						<li><a class="dropdown-item" href="ManageFuncs.jsp"><i class="fa-solid fa-list-check"></i> Manage Functionalities</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="ManageUsers.jsp"><i class="fa-solid fa-users"></i> Manage Users</a></li>
+					</ul></li>	
+               <%
+			      }
+                
                 if(u!=null){
                %>
 
+					<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="index.jsp"><i
+						class="fa-solid fa-gauge"></i> Dashboard</a></li>
+						
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false"><i
@@ -51,16 +72,17 @@
 			</ul>
 
 			<ul class="navbar-nav mr-right">
-				<%
-				User user = (User) session.getAttribute("currentUser");
-				if (user == null) {
+			    <%
+			    if(admin==null && user==null){
 				%>
+				<li class="nav-item"><a class="nav-link" href="AdminLogin.jsp"><i class="fa-solid fa-lock"></i> Admin Login</a></li>
+				
 				<li class="nav-item"><a class="nav-link" href="login.jsp"><i
 						class="fa-solid fa-right-to-bracket"></i> Login</a></li>
 				<li class="nav-item"><a class="nav-link" href="signup.jsp"><i
 						class="fa-solid fa-user-plus"></i> Sign-up</a></li>
 				<%
-				} else {
+				  } else if(admin==null && user!=null){
 				%>
 				<li class="nav-item"><a class="nav-link" href="LogoutServ"><i
 						class="fa-solid fa-power-off"></i> Logout</a></li>
@@ -68,6 +90,12 @@
 					data-bs-target="#staticBackdrop" href="#"><i
 						class="fa-solid fa-user"></i> <%=user.getfName()%></a></li>
 				<%
+				}
+				  else if(admin!=null && user == null){
+				%>	  
+				      	<li class="nav-item"><a class="nav-link" href="AdminLogoutServ"><i
+								class="fa-solid fa-power-off"></i> Admin Logout</a></li>
+				<% 
 				}
 				%>
 			</ul>

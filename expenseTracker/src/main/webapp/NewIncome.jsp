@@ -1,3 +1,7 @@
+<%@page import="com.entities.Sources"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.helper.ConnectionProvider"%>
+<%@page import="com.dao.adminDao"%>
 <%@page import="com.entities.AlertMessage"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -41,8 +45,13 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 									<label for="inctype" class="form-label">Income Source</label> <select
 										id="inctype" class="form-select" name="iT">
 										<option disabled selected>-: Select an option :-</option>
-										<option value="Salary">Salary</option>
-										<option value="Sundry Debtors">Sundry Debtors</option>
+										<% 
+										 adminDao daoo = new adminDao(ConnectionProvider.getConnection());
+										 ArrayList<Sources> listt = daoo.fetchSources();
+										 for(Sources ss : listt){
+										%>
+										 <option value="<%=ss.getName()%>"><%=ss.getName() %></option>
+										<% } %>
 									</select>
 								</div>
 
