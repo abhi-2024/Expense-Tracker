@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.entities.Admin;
 import com.entities.Sources;
 import com.entities.Types;
+import com.entities.User;
 
 public class adminDao {
 	private Connection con;
@@ -124,6 +125,42 @@ public class adminDao {
 		boolean f = false;
 		 try {
 			String s = "delete from types where idtypes=?";
+			PreparedStatement stmt = con.prepareStatement(s);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			f=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return f;
+	}
+	
+	public ArrayList<User> fetchAllUsers(){
+		ArrayList<User> list = new ArrayList<User>();
+		try {
+			String s = "select * from user";
+			PreparedStatement stmt = con.prepareStatement(s);
+			ResultSet set = stmt.executeQuery();
+			while(set.next()) {
+				User user = new User();
+				user.setfName(set.getString("userFName"));
+				user.setlName(set.getString("userLName"));
+				user.setEmail(set.getString("userEmail"));
+				user.setUid(set.getInt("iduser"));
+				list.add(user);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return list;
+	}
+	
+	public boolean delUser(int id) {
+		boolean f = false;
+		try {
+			String s = "delete from user where iduser=?";
 			PreparedStatement stmt = con.prepareStatement(s);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
