@@ -125,4 +125,18 @@ public class IncomeDao {
 		}
 		return list;
 	}
+	public boolean deleteIncome(int id) {
+		boolean f = false;
+		try {
+			String s = "delete from income where idincome=?";
+			PreparedStatement stmt = con.prepareStatement(s);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			f=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return f;
+	}
 }

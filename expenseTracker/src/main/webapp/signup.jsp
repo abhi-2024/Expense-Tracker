@@ -4,6 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@1,900&display=swap" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration Page</title>
 </head>
@@ -17,8 +20,8 @@
 			<div class="row">
 				<div class="col-md-6 offset-3">
 					<div class="card">
-						<div class="card-header">
-							<h1 class="display-6 text-center">Register</h1>
+						<div class="card-header" style="background-color: #ecc19c">
+							<h1 class="display-6 text-center" style="font-family: 'Playfair Display SC', serif;">Register</h1>
 						</div>
 						<%
 						AlertMessage m1 = (AlertMessage)session.getAttribute("signupMSG");

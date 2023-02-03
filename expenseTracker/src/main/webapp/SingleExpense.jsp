@@ -7,6 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
 <style type="text/css">
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button
 	{
@@ -38,12 +41,12 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 			<div class="row">
 				<div class="col-md-6 offset-3">
 					<div class="card">
-						<div class="card-header">
-							<h1 class="display-6 text-center">Expense</h1>
+						<div class="card-header" style="background-color: #ecc19c;">
+							<h1 class="display-6 text-center" style="font-family: 'Libre Baskerville', serif;">Expense</h1>
 							<div class="text-start">
 								<div class="btn-group" role="group"
 									aria-label="Basic mixed styles example">
-									<a type="button" onClick="sendEmail()" id="sInvoice" class="btn btn-warning"><i
+									<a type="button" onClick="sendEmail()" id="sInvoice" class="btn btn-success"><i
 										class="fa-solid fa-receipt"></i> Invoice</a>
 									<button type="button" id="editBtn" class="btn btn-danger">Edit</button>
 									<a type="button" id="aExp" class="btn btn-primary" href="BackRecExpServ">All
@@ -59,7 +62,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
                            <%=am2.getContent() %>
                         </div>
                         <% } session.removeAttribute("sExpMSG");%>
-						<div class="card-body">
+						<div class="card-body" style="background-color: #fff1e1;">
 							<table class="table" id="expenseView">
 								<tbody>
 									<tr>

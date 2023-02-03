@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@1,900&display=swap" rel="stylesheet">
 </head>
 <body>
 	<%@include file="links.jsp"%>
@@ -16,9 +19,11 @@
 			<div class="row">
 				<div class="col-md-6 offset-3">
 					<div class="card">
-						<div class="card-header">
-							<h1 class="display-6 text-center">Login</h1>
+						<div class="card-header" style="background-color: #ecc19c">
+							<h1 class="display-6 text-center" style="font-family: 'Playfair Display SC', serif;">LOGIN</h1>
 						</div>
+						
+						<div class="card-body" style="background-color: #1e847f">
 						<%
 										 AlertMessage m = (AlertMessage)session.getAttribute("loginMSG");
 										 if(m!=null){
@@ -30,8 +35,6 @@
                         }
 						session.removeAttribute("loginMSG"); 
 						 %>
-						<div class="card-body">
-						
 						 <form action="LoginServ" method="post">
 							<div class="form-floating mb-3">
 								<input type="email" class="form-control" id="floatingInput" required name="email" placeholder="name@example.com"> 
@@ -42,7 +45,7 @@
 								<input type="password" class="form-control" id="floatingPassword" required name="pass" placeholder="Password">
 								 <label for="floatingPassword">Password</label>
 							</div>
-							<div class="text-end"> <button class="btn" id="pBtn" onclick="myFunction(event)"> Show Password</button> </div>
+							<div class="text-end"> <button class="btn mt-2" style="background-color: #ecc19c;" id="pBtn" onclick="myFunction(event)"> Show Password</button> </div>
 							<div class="mt-2 text-center">
 							 <button type="submit" class="btn btn-primary">Login</button>
 							 <a href="signup.jsp" class="btn btn-secondary">New User</a>

@@ -8,6 +8,7 @@ $(document).ready(function() {
 			$('#incomeEdit').show();
 			$('#sInvoice').hide();
 			$('#aExp').hide();
+			$('#delInc').hide();
 			$('#editBtn').text('View');
 			stat = true;
 		} else {
@@ -15,6 +16,7 @@ $(document).ready(function() {
 			$('#incomeEdit').hide();
 			$('#sInvoice').show();
 			$('#aExp').show();
+			$('#delInc').show();
 			$('#editBtn').text('Edit');
 			stat = false;
 		}

@@ -18,7 +18,12 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 	appearance: none;
 	margin: 0;
 }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 </style>
+
 </head>
 <%
  User use = (User)session.getAttribute("currentUser");
@@ -35,8 +40,8 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 			<div class="row">
 				<div class="col-md-6 offset-3">
 					<div class="card">
-						<div class="card-header">
-							<h1 class="display-6 text-center">Expenses</h1>
+						<div class="card-header" style="background-color: #f3ca20;">
+							<h1 class="display-6 text-center" style="font-family: 'Creepster', cursive;">ADD EXPENSES</h1>
 						</div>
 						<% 
 						 AlertMessage m = (AlertMessage)session.getAttribute("newExpMSG");
